@@ -1,15 +1,22 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
-const accommodations = [
+interface Accommodation {
+  title: string;
+  image: string;
+  description: string;
+}
+
+const accommodations: Accommodation[] = [
   {
     title: "FAMILY SUITE",
     image:
       "https://www.manumaharaniresorts.com/wp-content/uploads/2025/01/mm-executive-room.webp",
     description:
-      "The ideal sanctuary for parents and up to two kids, this spacious luxury accommodation in Bali combines a romantic hideaway with a children’s room and ample living space all on one level.",
+      "The ideal sanctuary for parents and up to two kids, this spacious luxury accommodation in Bali combines a romantic hideaway with a children's room and ample living space all on one level.",
   },
   {
     title: "RIVERFRONT ONE-BEDROOM VILLA",
@@ -30,14 +37,14 @@ const accommodations = [
     image:
       "https://www.manumaharaniresorts.com/wp-content/uploads/2022/04/MOK_9989.webp",
     description:
-      "Intricately carved wood, locally sourced shells and traditional ikat fabric harmonize with the surrounding hillside’s rich greenery and rice terraces in this luxury Bali accommodation with private pool.",
+      "Intricately carved wood, locally sourced shells and traditional ikat fabric harmonize with the surrounding hillside's rich greenery and rice terraces in this luxury Bali accommodation with private pool.",
   },
   {
     title: "ROYAL VILLA",
     image:
       "https://www.manumaharaniresorts.com/wp-content/uploads/2022/11/MOK_0024-HDR.webp",
     description:
-      "This three-bedroom, art-filled Royal Villa with private pool – accessible through the Resort’s dramatic rooftop – exemplifies casual elegance with its open-sided living and dining areas and Balinese-style accommodation.",
+      "This three-bedroom, art-filled Royal Villa with private pool – accessible through the Resort's dramatic rooftop – exemplifies casual elegance with its open-sided living and dining areas and Balinese-style accommodation.",
   },
 ];
 
@@ -47,7 +54,7 @@ const CARD_WIDTH =
 const GAP = 24;
 const ANIMATION_DURATION = 500;
 
-function getClones(list, visible) {
+function getClones(list: Accommodation[], visible: number): Accommodation[] {
   return [...list.slice(-visible), ...list, ...list.slice(0, visible)];
 }
 
@@ -77,7 +84,7 @@ export default function AccommodationsCarousel() {
     containerWidth / 2 - CARD_WIDTH / 1.6 - index * (CARD_WIDTH + GAP);
 
   // Navigation
-  const goTo = (newIdx) => {
+  const goTo = (newIdx: number) => {
     setIsAnimating(true);
     setIndex(newIdx);
   };
@@ -105,18 +112,18 @@ export default function AccommodationsCarousel() {
     return () => clearTimeout(handle);
   }, [isAnimating, index, total]);
 
-  // Center card logic
-  const centerIdx = (index - VISIBLE_CARDS + total) % total;
+  // Calculate center index for display
+  const centerIdx = (((index - VISIBLE_CARDS) % total) + total) % total;
 
   return (
-    <section className="w-full flex flex-col items-center py-10 md:py-20 bg-white">
-      <h2
-        className="text-xl md:text-3xl font-thin tracking-widest text-center mb-8 md:mb-12 uppercase"
-        style={{ color: "#000000" }}
-      >
-        ACCOMMODATIONS
-      </h2>
-      <div className="relative flex flex-col items-center h-[350px] md:h-[550px] w-full justify-center">
+    <section className="w-full py-24 bg-white">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <h2
+          className="text-3xl md:text-4xl font-thin tracking-widest text-center mb-12 uppercase"
+          style={{ color: "#000000" }}
+        >
+          Accommodations
+        </h2>
         {/* Carousel Row */}
         <div
           ref={containerRef}
@@ -154,9 +161,11 @@ export default function AccommodationsCarousel() {
                     transform: isCenter ? "scale(1.05)" : "scale(1)",
                   }}
                 >
-                  <img
+                  <Image
                     src={card.image}
                     alt={card.title}
+                    width={400}
+                    height={300}
                     className={`w-full object-cover ${
                       isCenter ? "h-48" : "h-60"
                     }`}

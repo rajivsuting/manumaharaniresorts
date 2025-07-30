@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import Image from "next/image";
 
 import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
 
@@ -11,8 +12,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import SwiperCore from "swiper";
-SwiperCore.use([Navigation, Autoplay]);
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -225,9 +224,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Dasos */}
             <div className="relative group rounded-lg overflow-hidden">
-              <img
+              <Image
                 src="https://www.manumaharaniresorts.com/wp-content/uploads/2022/10/pexels-pixabay-533325-scaled-1024x654.jpg"
                 alt="Dasos"
+                width={800}
+                height={600}
                 className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
@@ -240,16 +241,18 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            {/* Gurney's Grill */}
+            {/* Gurney&apos;s Grill */}
             <div className="relative group rounded-lg overflow-hidden">
-              <img
+              <Image
                 src="https://www.manumaharaniresorts.com/wp-content/uploads/2022/09/DSC_9880-scaled-2048x1366.jpg"
                 alt="Gurney's Grill"
+                width={800}
+                height={600}
                 className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
                 <h3 className="text-2xl font-serif text-white mb-2">
-                  Gurney's Grill
+                  Gurney&apos;s Grill
                 </h3>
                 <p className="text-white/80 mb-4">Timing: 7 p.m - 10 p.m</p>
                 <button className="border border-white px-4 py-2 text-white uppercase tracking-widest font-medium text-xs hover:bg-white hover:text-black transition w-max">
@@ -282,6 +285,7 @@ export default function Home() {
             slidesPerView={3}
             loop={true}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
+            modules={[Navigation, Autoplay]}
             className="w-full h-full"
             breakpoints={{
               320: { slidesPerView: 1 },
@@ -292,9 +296,11 @@ export default function Home() {
             {experienceImages.map((img, idx) => (
               <SwiperSlide key={idx}>
                 <div className="relative w-full aspect-[16/9] flex items-center justify-center">
-                  <img
+                  <Image
                     src={img}
                     alt={`Experience ${idx + 1}`}
+                    width={400}
+                    height={300}
                     className="w-full h-full object-cover object-center"
                   />
                   <div className="absolute inset-0 flex flex-col justify-end">
@@ -326,9 +332,11 @@ export default function Home() {
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mx-auto">
             {/* Card 1 */}
             <div className="flex flex-col h-full bg-white overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/flagged/photo-1572534779127-b64758946728?auto=format&fit=crop&w=600&q=80"
                 alt="Wedding 1"
+                width={600}
+                height={400}
                 className="w-full h-80 object-cover object-center"
               />
               <div className="bg-[#000000] text-[#b68833] text-center py-3 text-lg font-serif tracking-widest flex flex-col items-center justify-center">
@@ -340,9 +348,11 @@ export default function Home() {
             </div>
             {/* Card 2 */}
             <div className="flex flex-col h-full bg-white overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1587271636175-90d58cdad458?auto=format&fit=crop&w=600&q=80"
                 alt="Wedding 2"
+                width={600}
+                height={400}
                 className="w-full h-80 object-cover object-center"
               />
               <div className="bg-[#000000] text-[#b68833] text-center py-3 text-lg font-serif tracking-widest flex flex-col items-center justify-center">
@@ -354,9 +364,11 @@ export default function Home() {
             </div>
             {/* Card 3 */}
             <div className="flex flex-col h-full bg-white overflow-hidden">
-              <img
+              <Image
                 src="https://www.manumaharaniresorts.com/wp-content/uploads/2024/04/romantic-getaway-1.webp"
                 alt="Wedding 3"
+                width={600}
+                height={400}
                 className="w-full h-80 object-cover object-center"
               />
               <div className="bg-[#000000] text-[#b68833] text-center py-3 text-lg font-serif tracking-widest flex flex-col items-center justify-center">
@@ -368,9 +380,11 @@ export default function Home() {
             </div>
             {/* Card 4 */}
             <div className="flex flex-col h-full bg-white overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?auto=format&fit=crop&w=600&q=80"
                 alt="Wedding 4"
+                width={600}
+                height={400}
                 className="w-full h-80 object-cover object-center"
               />
               <div className="bg-[#000000] text-[#b68833] text-center py-3 text-lg font-serif tracking-widest flex flex-col items-center justify-center">
@@ -395,15 +409,15 @@ export default function Home() {
               JIM CORBETT NATIONAL PARK
             </h2>
             <p className="text-white/90 text-lg mb-8">
-              India's first national park and still one of its most iconic,
+              India&apos;s first national park and still one of its most iconic,
               Corbett is a living, breathing wilderness. Spanning over 1,300
               square kilometres, its terrain ranges from dense forests to open
               grasslands and winding riverbeds, home to over 600 species of
               birds, elephants, leopards, and the elusive tiger. Named after
               Edward James Corbett, the hunter-turned-conservationist who became
-              the forest’s fiercest guardian, the park offers more than just
-              safaris — it’s a quiet, powerful reminder of nature in its purest
-              form.
+              the forest&apos;s fiercest guardian, the park offers more than
+              just safaris — it&apos;s a quiet, powerful reminder of nature in
+              its purest form.
             </p>
             <button className="border border-[#b68833] bg-transparent text-[#b68833] px-8 py-3 uppercase tracking-widest font-medium text-base hover:bg-white hover:text-[#000000] transition">
               Discover More
@@ -411,9 +425,11 @@ export default function Home() {
           </div>
           {/* Right: Tiger Illustration */}
           <div className="flex-1 flex justify-center items-center">
-            <img
+            <Image
               src="/tiger.png"
               alt="Tiger Illustration"
+              width={400}
+              height={400}
               className="max-w-sm w-full h-auto object-contain"
               style={{ filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.2))" }}
             />

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 import { ClockIcon } from "@heroicons/react/24/outline";
 
@@ -51,9 +52,11 @@ export default function DiscoverManuMaharani() {
         {experiences.map((exp, idx) => (
           <div key={idx} className="flex flex-col items-start">
             <div className="w-full aspect-[4/5] overflow-hidden mb-6">
-              <img
+              <Image
                 src={exp.image}
                 alt={exp.title}
+                width={400}
+                height={500}
                 className="w-full h-full object-cover object-center hover:scale-105 transition-all duration-300"
               />
             </div>

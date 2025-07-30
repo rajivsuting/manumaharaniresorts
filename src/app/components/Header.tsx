@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import {
   ShoppingBagIcon,
@@ -10,15 +11,11 @@ import {
 } from "@heroicons/react/24/solid";
 
 const Header = () => {
-  const [hideTop, setHideTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let lastScroll = window.scrollY;
     const onScroll = () => {
-      const current = window.scrollY;
-      setHideTop(current > 40);
-      lastScroll = current;
+      // Handle scroll logic here if needed
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -30,9 +27,11 @@ const Header = () => {
       <div className="w-full flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-2 md:py-3 gap-2 md:gap-0">
         {/* Logo and divider */}
         <div className="flex items-center w-full md:w-auto justify-between">
-          <img
+          <Image
             src="https://www.manumaharaniresorts.com/wp-content/uploads/2022/09/Final-Logo_Manu-Maharani.png"
             alt="Manu Maharani Resort & Spa Logo"
+            width={200}
+            height={64}
             className="h-10 w-auto object-contain md:h-16"
           />
           <button

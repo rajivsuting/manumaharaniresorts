@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const offers = [
   {
@@ -56,10 +57,11 @@ export default function FeaturedOffers() {
             key={idx}
             className="relative group overflow-hidden shadow-lg min-h-[260px] md:min-h-[400px] flex flex-col justify-end rounded-lg"
           >
-            <img
+            <Image
               src={offer.image}
               alt={offer.title}
-              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              fill
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
             <div className="relative z-20 p-3 md:p-4 flex flex-col gap-2">

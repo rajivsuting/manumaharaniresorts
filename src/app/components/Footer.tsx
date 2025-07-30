@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
@@ -49,9 +50,11 @@ export default function Footer() {
     <footer className="bg-[#000000] text-white pt-10 pb-4 px-2 md:pt-20 md:pb-6 md:px-4">
       <div className="flex flex-col items-center mb-8 md:mb-16">
         <div className="mb-4 md:mb-6 flex flex-col items-center">
-          <img
+          <Image
             src="https://www.manumaharaniresorts.com/wp-content/uploads/2022/09/Final-Logo_Manu-Maharani.png"
             alt="Manu Maharani Resort & Spa Logo"
+            width={200}
+            height={64}
             className="h-10 w-auto object-contain mb-2 md:h-16"
           />
         </div>
